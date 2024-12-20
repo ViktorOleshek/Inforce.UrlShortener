@@ -1,0 +1,6 @@
+@Inforce.UrlShortener.WebApi_HostAddress = http://localhost:5214
+
+GET {{Inforce.UrlShortener.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
