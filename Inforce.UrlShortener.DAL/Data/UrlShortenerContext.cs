@@ -14,8 +14,8 @@ namespace Inforce.UrlShortener.DAL.Data
         {
         }
 
-        public DbSet<User> Users { get; set; } = null!;
         public DbSet<Role> Roles { get; set; } = null!;
+        public DbSet<User> Users { get; set; } = null!;
         public DbSet<Url> Records { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -42,9 +42,12 @@ namespace Inforce.UrlShortener.DAL.Data
                  .IsRequired()
                  .HasMaxLength(255);
 
-                e.Property(u => u.Role)
-                 .IsRequired()
-                 .HasMaxLength(60);
+                e.Property(u => u.Email)
+                    .IsRequired()
+                    .HasMaxLength(255);
+
+                e.Property(u => u.PhoneNumber)
+                    .HasMaxLength(20);
 
                 e.HasIndex(u => u.Login)
                  .IsUnique();
