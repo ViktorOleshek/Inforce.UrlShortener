@@ -7,4 +7,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="IServices\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Inforce.UrlShortener.Entities\Inforce.UrlShortener.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
