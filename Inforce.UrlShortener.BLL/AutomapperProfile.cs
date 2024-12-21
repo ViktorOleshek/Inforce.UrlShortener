@@ -22,6 +22,7 @@ namespace Inforce.UrlShortener.BLL
             this.CreateMap<User, UserDto>()
                 .ForMember(dto => dto.Id, opt => opt.MapFrom(entity => entity.Id))
                 .ForMember(dto => dto.Login, opt => opt.MapFrom(entity => entity.Login))
+                .ForMember(dto => dto.Password, opt => opt.MapFrom(entity => entity.Password))
                 .ForMember(dto => dto.Email, opt => opt.MapFrom(entity => entity.Email))
                 .ForMember(dto => dto.PhoneNumber, opt => opt.MapFrom(entity => entity.PhoneNumber))
                 .ForMember(dto => dto.RoleName, opt => opt.MapFrom(entity => entity.Role.RoleName))
