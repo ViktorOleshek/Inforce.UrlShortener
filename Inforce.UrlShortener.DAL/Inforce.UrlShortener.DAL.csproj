@@ -21,4 +21,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Inforce.UrlShortener.Abstraction\Inforce.UrlShortener.Abstraction.csproj" />
+  </ItemGroup>
+
 </Project>

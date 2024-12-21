@@ -1,4 +1,4 @@
-﻿using Inforce.UrlShortener.DAL.Entities;
+﻿using Inforce.UrlShortener.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Inforce.UrlShortener.DAL.Data
