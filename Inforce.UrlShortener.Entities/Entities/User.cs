@@ -1,4 +1,4 @@
-﻿namespace Inforce.UrlShortener.DAL.Entities
+﻿namespace Inforce.UrlShortener.Entities
 {
     public class User : BaseEntity
     {
