@@ -18,14 +18,6 @@ namespace Inforce.UrlShortener.DAL.Data
         public DbSet<User> Users { get; set; } = null!;
         public DbSet<Url> Records { get; set; } = null!;
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    if (!optionsBuilder.IsConfigured)
-        //    {
-        //        optionsBuilder.UseSqlServer("Data Source=LAPTOP-CARDONA;Initial Catalog=Inforce.UrlShortener;Integrated Security=True;Trust Server Certificate=True");
-        //    }
-        //}
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             ArgumentNullException.ThrowIfNull(modelBuilder);

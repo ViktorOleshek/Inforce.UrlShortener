@@ -1,16 +1,10 @@
 ﻿using Inforce.UrlShortener.Abstraction.IRepositories;
 using Inforce.UrlShortener.Abstraction.IServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Inforce.UrlShortener.WebApi
 {
@@ -25,12 +19,8 @@ namespace Inforce.UrlShortener.WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            //builder.Services.AddEndpointsApiExplorer();
-
             services.AddControllers();
 
-            // CORS configuration
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAnyOrigin", policy =>
@@ -55,7 +45,6 @@ namespace Inforce.UrlShortener.WebApi
                         };
                     });
 
-            // SQL Server configuration
             services.AddDbContext<Inforce.UrlShortener.DAL.Data.UrlShortenerContext>(options =>
                 options.UseSqlServer(this.Configuration.GetConnectionString("UrlShortener"))
                        .UseLazyLoadingProxies());
@@ -84,7 +73,6 @@ namespace Inforce.UrlShortener.WebApi
             app.UseHttpsRedirection();
             app.UseRouting();
 
-            // Use CORS
             app.UseCors("AllowAnyOrigin");
 
             app.UseAuthentication();
