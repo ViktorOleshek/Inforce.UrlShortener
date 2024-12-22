@@ -1,12 +1,27 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { AuthentificationService } from './shared/services/authentification.service';
+import { NgIf } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [RouterOutlet, RouterLink, NgIf],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Inforce.UrlShortener.Angular';
+  title = 'Inforce.UrlShortener';
+
+  constructor(public authService: AuthentificationService, private router: Router) {}
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/']);
+  }
+
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
 }
