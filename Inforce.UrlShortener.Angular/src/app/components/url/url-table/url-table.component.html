@@ -1,0 +1,43 @@
+<div class="url-list container my-4 p-4 bg-white rounded shadow-sm">
+  <h2 class="text-center mb-4">Urls</h2>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col" (click)="toggleSort('id')" class="cursor-pointer">
+          Url <span [innerHTML]="getSortIcon('id')"></span>
+        </th>
+        <th scope="col" (click)="toggleSort('name')" class="cursor-pointer">
+          ShortUrl <span [innerHTML]="getSortIcon('name')"></span>
+        </th>
+        <th *ngIf="authentificationService.isLoggedIn()" scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let url of paginatedUrls | sort:sortField:sortOrder">
+        <td>{{ url.originalUrl }}</td>
+        <td>{{ url.shortUrl }}</td>
+        <td *ngIf="authentificationService.isLoggedIn()">
+          <button (click)="editUrl(url.id)" class="btn btn-success btn-sm">
+            <i class="bi bi-pencil"></i>
+          </button>
+          <button (click)="deleteUrl(url.id)" class="btn btn-danger btn-sm">
+            <i class="bi bi-trash"></i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="d-flex justify-content-between align-items-center mt-3">
+    <div>
+      <button (click)="prevPage()" [disabled]="currentPage === 1" class="btn btn-secondary btn-sm">Previous</button>
+      <span class="mx-2">Page {{ currentPage }} of {{ totalPages }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages" class="btn btn-secondary btn-sm">Next</button>
+    </div>
+    <button *ngIf="authentificationService.isLoggedIn()" (click)="addUrl()" class="btn btn-primary btn-sm">Add url</button> <!-- Покажемо кнопку тільки якщо користувач увійшов -->
+    <button (click)="reloadUrls()" class="btn btn-secondary btn-sm">Reload Data</button>
+  </div>
+</div>
