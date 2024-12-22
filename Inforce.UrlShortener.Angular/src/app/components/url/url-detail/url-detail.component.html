@@ -1,0 +1,28 @@
+<div class="url-detail">
+  <h2>{{ url.id === 0 ? 'Add New URL' : 'Edit URL' }}</h2>
+
+  <form (ngSubmit)="saveUrl()">
+    <div>
+      <label for="originalUrl">Original URL</label>
+      <input type="text" id="originalUrl" [(ngModel)]="url.originalUrl" name="originalUrl" required />
+    </div>
+
+    <div>
+      <label for="shortUrl">Short URL</label>
+      <input type="text" id="shortUrl" [(ngModel)]="url.shortUrl" name="shortUrl" required />
+    </div>
+
+    <div>
+      <label for="creatorId">Creator ID</label>
+      <input type="number" id="creatorId" [(ngModel)]="url.creatorId" name="creatorId" />
+    </div>
+
+    <div>
+      <label for="createdBy">Created By</label>
+      <input type="text" id="createdBy" [(ngModel)]="url.createdBy" name="createdBy" />
+    </div>
+
+    <button type="submit">{{ url.id === 0 ? 'Add' : 'Save' }}</button>
+    <button type="button" (click)="cancel()">Cancel</button>
+  </form>
+</div>
